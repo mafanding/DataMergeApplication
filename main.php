@@ -28,8 +28,8 @@ if (!empty($csvfiles)){
 	$md=new MergeData();
 	$md->exec($csvfiles,$output_directory,$output_name);
 	clearFiles($csvfiles);
-	printf('done!');
+	printf("done!\r\n");
 }else{
-	printf('There are none files need to merge!');
+	printf("There are none files need to merge!\r\n");
 }
 exit(0);

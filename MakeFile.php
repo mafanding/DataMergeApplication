@@ -6,9 +6,9 @@ if (PHP_SAPI!=='cli') {
 
 $projectPath=isset($_SERVER['argv'][1])?$_SERVER['argv'][1]:dirname(__FILE__);
 $binFileName=isset($_SERVER['argv'][2])?$_SERVER['argv'][2].'.phar':substr($projectPath, strripos($projectPath, DIRECTORY_SEPARATOR )+1).'.phar';
-$defaultStub=isset($_SERVER['argv'][3])?$_SERVER['argv'][3]:'main.php';
+$defaultStub=isset($_SERVER['argv'][3])?$_SERVER['argv'][3].'.php':'main.php';
 $buildInFiles=isset($_SERVER['argv'][4])?'/'.$_SERVER['argv'][4].'/':'/.*/';
-$is_compress=isset($_SERVER['argv'][5])?$_SERVER['argv'][5]:false;
+$is_compress=isset($_SERVER['argv'][5])?true:false;
 // create with alias "project.phar"
 $phar = new Phar($binFileName);
 // add all files in the project
@@ -19,5 +19,5 @@ if ($is_compress) {
     $phar->stopBuffering();
 }
 $phar->setStub($phar->createDefaultStub($defaultStub));
-printf('done!');
+printf("done!\r\n");
 exit(0);

@@ -70,6 +70,7 @@ class MergeData {
 				$arr=$fh->fgetcsv();
 				if (is_array($arr)&&!empty($arr)){
 					array_walk($arr,function (&$value){
+					    $value=str_replace(array("\r\n","\r","\n")," ",rtrim($value));
 						$value=trim($value,'"﻿"');
 						$value=rtrim($value,'#');
 						$value=trim($value);
